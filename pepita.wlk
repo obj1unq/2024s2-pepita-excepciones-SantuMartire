@@ -6,9 +6,15 @@ object pepita {
 	}
 	
 	method volar(distancia) {
+		self.validarVuelo(distancia)
 		energia = energia - 10 - distancia
 	}
 		
+	method validarVuelo(distancia){
+		if(distancia +10 > energia){
+			self.error("La energia de pepita, que es " + energia + ", es insuficiente para volar esa distancia")
+		}
+	}
 	method energia() {
 		return energia
 	}
@@ -54,7 +60,13 @@ object pepon {
 	}
 		
 	method volar(distancia) {
+		self.validarVuelo(distancia)
 		energia = energia - 20 - 2*distancia
+	}
+	method validarVuelo(distancia){
+		if(distancia*2 +20 > energia){
+			self.error("La energia de pepon, que es " + energia + ", es insuficiente para volar esa distancia")
+		}
 	}
 	
 }
@@ -73,4 +85,17 @@ object roque {
 		cenas = cenas + 1
 	}
 }
+
+object milena {
+
+	var ave1 = pepita
+	var ave2 = pepon
+
+	method movilizar(distancia){
+		ave1.volar(distancia)
+		ave2.volar(distancia)
+		}
+	}
+
+
 
